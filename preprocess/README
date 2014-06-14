@@ -1,0 +1,6 @@
+To run preprocess.py script:
+
+python preprocess.py <inputfile.json> <outputfile.csv>
+
+eg:
+python preprocess.py input/joined_businesses.json output/output.csv
