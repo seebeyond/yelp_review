@@ -30,12 +30,12 @@ data={}
 for h in headers:
 	data[h]=[]
 
-rowid = 1
+#rowid = 1
 for row in reader:
-	print rowid
+	#print rowid
 	for h, v in zip(headers, row):
 		data[h].append(convertType(h,v))
-	rowid=rowid+1
+	#rowid=rowid+1
 
 ##
 # add new length of review text feature
