@@ -65,6 +65,8 @@ for i in reversed(topEntries):
 			rstars=reviewItem['stars']
 			rtext=reviewItem['text']
 			rtext=rtext.encode('ascii',errors='ignore')
+			rtext=rtext.replace('\n','')
+			rtext=rtext.replace('\r','')
 			#
 			userItem=reviewItem['user']
 			ruser_name=userItem['name']
