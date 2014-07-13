@@ -18,7 +18,7 @@ header=data[0]
 xdata=data[1:len(data)]
 random.shuffle(xdata)
 
-trainingLimit=len(xdata)*90/100
+trainingLimit=len(xdata)*80/100
 testingLimit=len(xdata)-trainingLimit
 
 trainingsplit=xdata[0:trainingLimit]
