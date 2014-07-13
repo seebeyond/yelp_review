@@ -1,0 +1,32 @@
+YelpReviewParser
+===============
+
+This is a JAVA wrapper around the Stanford parser that can be used to 
+train the Stanford parser on our own data bank of interest.
+
+In PCFG feature extraction, this wrapper will be used to train seperate
+PCFG parser models for useful and not useful reviews from Yelp data.
+
+Dependencies:
+
+*stanford-parser.jar
+*stanfprd-parser-3.4-models.jar
+
+Modes of operation:
+===================
+
+This can be used in two MODES:
+1) TRAIN mode:
+In train mode, the wrapper takes parse trees of useful/notuseful reviews and uses them to train a parser model for each category.
+
+2) PARSE mode:
+In parse mode, the wrapper loads either the useful or not useful reviews parser and generates features (that need to be post processed using extract_pcfg_features.py).
+
+Training data for running the wrapper in TRAIN mode:
+====================================================
+
+In order to generate seed data using which the stanford parser can be trained for useful and not useful review models, we use domain adaptation. 
+
+The default language model (edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz) provided by the lexparser.sh interface in Stanford parser (http://nlp.stanford.edu/software/lex-parser.shtml) can be used for parsing the seed data generated using generate_parser_seed_data.py.
+
+Then, this seed data is fed to parser in TRAIN mode for creating models for useful and not useful reviews. These trained models can be used to generate PCFG features in PARSE mode.
