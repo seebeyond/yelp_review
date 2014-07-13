@@ -37,18 +37,22 @@ for i in xrange(0,len(content)):
 # 'restaurantLimit' number of restaurant businesses
 # store the result as a csv file
 #
-numEntries=20
+numEntries=len(countList)
 sortedList=sorted(countList)
 topEntries=sortedList[-numEntries:]
 
 isRestaurant=False
 numRestaurantsFound=0
-restaurantsLimit=10
+restaurantsLimit=len(countList)
+numReviews=0
+numRepeats=0
+reviewIds=set()
 for i in reversed(topEntries):
 	topEntry=i
 	rIndex=countList.index(topEntry)
 	a=json.loads(content[rIndex],encoding='ascii')
-	print u"{} ----- {} ----- {} ----- {}".format(rIndex,a['name'], a['review_count'], a['categories'])
+	a['name']=a['name'].encode('ascii',errors='ignore');
+	#print u"{} ----- {} ----- {} ----- {}".format(rIndex,a['name'], a['review_count'], a['categories'])
 	for j in xrange(0,len(a['categories'])):
 		matchResult = re.match('restaurant',a['categories'][j],re.I)
 		if matchResult:
@@ -60,7 +64,15 @@ for i in reversed(topEntries):
 		nreviews=len(a['reviews'])
 		for k in xrange(0,nreviews):
 			reviewItem=a['reviews'][k]
+
 			rid=reviewItem['review_id']
+			#check for repeated reviews
+			if rid in reviewIds:
+				numRepeats=numRepeats+1
+				continue
+			else:
+				reviewIds.add(rid)
+			#
 			rdate=reviewItem['date']
 			rstars=reviewItem['stars']
 			rtext=reviewItem['text']
@@ -86,10 +98,14 @@ for i in reversed(topEntries):
 			review_useful=votesItem['useful']
 			#
 			writer.writerow( (a['business_id'],a['name'],a['review_count'],rid,rdate,rstars,rtext,ruser_name,ruser_avgstars,ruser_cool,ruser_funny,ruser_useful,ruser_fans,ruser_friendcount,ruser_reviewcount,ruser_yelpstart,review_cool,review_funny,review_useful) )
+			numReviews=numReviews+1;
 		isRestaurant=False
 		numRestaurantsFound=numRestaurantsFound+1;
 		if numRestaurantsFound == restaurantsLimit:
 			break
 
+print "Number of restaurants included: ",numRestaurantsFound
+print "Number of reviews stored: ", numReviews
+print "Number of repeated reviews: ", numRepeats
 outfile.close()
 f.close()
