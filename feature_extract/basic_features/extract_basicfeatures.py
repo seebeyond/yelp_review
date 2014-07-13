@@ -87,6 +87,7 @@ numSentences=list()
 avgNumWords=list()
 
 for i in xrange(0,len(data['text'])):
+	
 	sr=data['text'][i]
 	rsentences=sr.split('.')
 	filtered_sentences=filter(len,rsentences)
@@ -96,7 +97,11 @@ for i in xrange(0,len(data['text'])):
 		swords=j.split(' ')
 		fswords=filter(len,swords)
 		sumWords=sumWords+len(fswords)
-	avgNumWords.append(sumWords/len(filtered_sentences))
+	if len(filtered_sentences) == 0:
+		print "zero sentences - ",sr
+		avgNumWords.append(0)
+	else:
+		avgNumWords.append(sumWords/len(filtered_sentences))
 
 features['review_numsentences'] = numSentences
 features['review_avgnumwords'] = avgNumWords
@@ -140,7 +145,7 @@ features['user_yelpexp']=userExp
 #
 review_use=list()
 for i in xrange(0,len(data['review_useful'])):
-	if data['review_useful'][i]>0:
+	if data['review_useful'][i]>=6:
 		review_use.append(1)
 	else:
 		review_use.append(0)
