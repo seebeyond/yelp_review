@@ -1,0 +1,12 @@
+COMBINE FEATURES SCRIPT
+=======================
+
+This script can be used to combine all individual features from
+basic_features, pcfg_feature, ngram_feature and sentiment_feature.
+
+Till a pipeline is in place, this setup can be used.
+
+Very volatile code since it needs to change based on other feature
+extraction components. Better to double check this component every time
+any change is done to feature extraction component.
+
