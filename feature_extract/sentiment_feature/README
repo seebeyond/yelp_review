@@ -1,0 +1,29 @@
+Sentiment feature extraction for Yelp restaurant reviews
+========================================================
+
+SentimentScorer
+==============
+
+Sentiment feature extraction is done in JAVA using SentiWordNet (see references below). There are no special scripts required for post processing sentiment features. The tool outputs sum of sentiment scores of words in each sentence. There is lot of scope for improvement in this feature. At the moment, no WSD is used. Instead, averaging is used. Also, the polarity in sentiments is not at all taken into account. The expression of sentiments in reviews is only taken into account as an aggregate measure. For more details on approximation, please take a look at the code.
+
+The JAR version of sentiment feature extraction component is included in the data package which can be used directly.
+
+Dependencies:
+=============
+*sentiwordnet package: http://sentiwordnet.isti.cnr.it/download.php
+This must be supplied as one of the arguments to the file.
+
+The following jars must be included in classpath:
+*stanford-parser-3.4-models.jar
+*stanford-parser.jar
+
+References:
+===========
+* Website for the tool:
+  http://sentiwordnet.isti.cnr.it/
+
+* Sample code for using the sentiwordnet was obtained from this link:
+  http://sentiwordnet.isti.cnr.it/code/SentiWordNetDemoCode.java
+
+
+I have used the stanford parser tokenfactory class to assist in consistently spliting the review text into sentences. This was done because the parsers anyways use this class to split text into sentences. Hence, to maintain consistency I used the same component.
