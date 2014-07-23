@@ -6,8 +6,13 @@ import csv
 #check args
 if len(sys.argv) < 3:
 	#print str(sys.argv[1])
-	print "Args Missing!! \nUsage: preprocess.py <input_file.json> <output_file.csv>"
+	print "Args Missing!! \nUsage: preprocess.py <input_file.json> <output_file.csv> <MODE>"
 	exit()
+
+# MODE ALL - all business reviews
+# MODE RESTAURANT - filter only restaurant reviews
+#
+mode=str(sys.argv[3]);
 
 #input file
 f=open(str(sys.argv[1]))
@@ -41,26 +46,34 @@ numEntries=len(countList)
 sortedList=sorted(countList)
 topEntries=sortedList[-numEntries:]
 
-isRestaurant=False
-numRestaurantsFound=0
-restaurantsLimit=len(countList)
+if mode=="ALL":
+	isRequired=True
+else:
+	isRequired=False
+
+numBusinessFound=0
+businessLimit=len(countList)
 numReviews=0
 numRepeats=0
 reviewIds=set()
-for i in reversed(topEntries):
-	topEntry=i
-	rIndex=countList.index(topEntry)
+countUseful=0
+countNU=0
+
+for rIndex in xrange(0,len(countList)):
+	if countList[rIndex]==0:
+		continue
 	a=json.loads(content[rIndex],encoding='ascii')
 	a['name']=a['name'].encode('ascii',errors='ignore');
 	#print u"{} ----- {} ----- {} ----- {}".format(rIndex,a['name'], a['review_count'], a['categories'])
-	for j in xrange(0,len(a['categories'])):
-		matchResult = re.match('restaurant',a['categories'][j],re.I)
-		if matchResult:
-			print "found restaurant {}".format(a['name'])
-			isRestaurant=True
-			break
-	if isRestaurant:
-		print "writing restaurant {}".format(a['name'])
+	if mode=="RESTAURANT":
+		for j in xrange(0,len(a['categories'])):
+			matchResult = re.match('restaurant',a['categories'][j],re.I)
+			if matchResult:
+			#	print "found restaurant {}".format(a['name'])
+				isRequired=True
+				break
+	if isRequired:
+#		print "writing restaurant {}".format(a['name'])
 		nreviews=len(a['reviews'])
 		for k in xrange(0,nreviews):
 			reviewItem=a['reviews'][k]
@@ -97,15 +110,26 @@ for i in reversed(topEntries):
 			review_funny=votesItem['funny']
 			review_useful=votesItem['useful']
 			#
+			#
+		        if review_useful<6:
+				countNU+=1
+                	else:
+                        	countUseful+=1
+
 			writer.writerow( (a['business_id'],a['name'],a['review_count'],rid,rdate,rstars,rtext,ruser_name,ruser_avgstars,ruser_cool,ruser_funny,ruser_useful,ruser_fans,ruser_friendcount,ruser_reviewcount,ruser_yelpstart,review_cool,review_funny,review_useful) )
 			numReviews=numReviews+1;
-		isRestaurant=False
-		numRestaurantsFound=numRestaurantsFound+1;
-		if numRestaurantsFound == restaurantsLimit:
+		if mode=="RESTAURANT":
+			isRequired=False
+		numBusinessFound=numBusinessFound+1;
+		if numBusinessFound == businessLimit:
 			break
 
-print "Number of restaurants included: ",numRestaurantsFound
+print "Mode: ",mode
+print "Number of businesses included: ",numBusinessFound
 print "Number of reviews stored: ", numReviews
 print "Number of repeated reviews: ", numRepeats
+
+print "useful count: ",countUseful
+print "not usefule count: ",countNU
 outfile.close()
 f.close()
