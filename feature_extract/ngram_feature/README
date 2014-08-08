@@ -1,0 +1,22 @@
+Ngram feature extraction
+========================
+
+    
+    Added two scripts for extracting character and word ngram features.
+    Has some compatability issue since python has some issues with smoothing.
+    This is tested in:
+    
+    >>> nltk.__version__
+    '2.0.4'
+    
+    * While testing few word ngrams and character ngrams had probabilities
+    greater than 1 (which is the smoothing prob)
+    * As an adhoc fix to unblock, this code ignores such ngrams. They accounted for
+    13-14% of the total (repetitions included) ngrams in the data. This analysis code can be found at the bottom of the files (commented).
+    * Word ngram script works for N-value 1,2 and 3 only ie., bi and trigram features.
+    
+    The script creates ngram model and also generates ngram features for training
+    data simulataneously in a single step. So, if models need to be stored seperately, the code needs to be changed to pickle the model and reus
+    
+    For arguments, please check comments inside the script.
+

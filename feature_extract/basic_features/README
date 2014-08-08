@@ -1,0 +1,13 @@
+BASIC FEATURES extraction
+=========================
+
+
+Extracts basic features from the review Yelp data which
+are not related to review text language as such.
+Examples of such features include, rating associated with 
+the review, age of review, reviewer information and other
+such info associated with each review instance in Yelp data.
+
+The script in this module extracts these features from
+preprocessed reviews and puts them into a CSV file that can
+be used for combining with other features.

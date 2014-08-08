@@ -1,0 +1,12 @@
+PCFG Feature extraction
+=======================
+
+Contains scripts and code for all the following steps
+involded in PCFG feature extraction:
+
+1) generate seed data to train parser models
+2) wrapper around stanford parser that can be used to 
+train new parser models and parse reviews using the new
+trained parser models
+3) extract the needed PCFG features from raw parse scores
+of sentences produced from parsing for each review instance.

@@ -1,0 +1,19 @@
+FEATURE EXTRACTION
+==================
+
+This module contains scripts and code for
+extraction of different features namely:
+1)PCFG features
+2)Ngram features
+3)Sentiment features
+4) baseline features
+5) basic features
+
+It also includes a 'combine' module that helps
+combine all these seperately extracted features
+into one feature input file for modeling. This is
+slightly hard coded nature and code should be studied
+to modify according to needs.
+
+Also, see description inside different feature extraction
+components to know dependencies.
