@@ -56,6 +56,7 @@ for record in usefulReviewInstances:
 
 random.shuffle(newTrainData)
 
+writer.writerow(header)
 writer.writerows(newTrainData)
 outfile.close()
 infile.close()
