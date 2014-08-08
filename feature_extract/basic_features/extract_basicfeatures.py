@@ -14,12 +14,14 @@ import datetime
 from datetime import date
 
 #check args
-if len(sys.argv) < 3:
+if len(sys.argv) < 4:
 	#print str(sys.argv[1])
-	print "Args Missing!! \nUsage: extract_featureset1.py <input_file.csv> <output_file.csv>"
+	print "Args Missing!! \nUsage: extract_featureset1.py <input_file.csv> <output_file.csv> <THRESHOLD>"
 	exit()
 infile=open(str(sys.argv[1]))
 reader=csv.reader(infile)
+
+threshold=int(sys.argv[3])
 
 def convertType(h,v):
 	if h == 'avgstars':
@@ -145,7 +147,7 @@ features['user_yelpexp']=userExp
 #
 review_use=list()
 for i in xrange(0,len(data['review_useful'])):
-	if data['review_useful'][i]>=6:
+	if data['review_useful'][i]>=threshold:
 		review_use.append(1)
 	else:
 		review_use.append(0)
