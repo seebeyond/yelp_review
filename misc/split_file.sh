@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#USAGE: ./split_file.sh <FILENAME> <CHUNKSIZE>
+#USAGE: ./split_file.sh <FILENAME> <CHUNKSIZE> <PREFIX>
 FILE=$1
 CHUNKSIZE=$2
 PREFIX=$3

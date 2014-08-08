@@ -8,7 +8,7 @@ import numpy
 import sys
 
 if len(sys.argv) < 3:
-    sys.exit("Usage: extract_pcfg_features.py infile1.tsv infile2.tsv outfile.csv")
+    sys.exit("Usage: extract_pcfg_features.py in_useful_file1.tsv in_notusefule_file2.tsv outfile.csv")
 
 infile1=open(sys.argv[1])
 inreader1 = csv.reader(infile1,delimiter="\t")
