@@ -20,7 +20,11 @@ reviews do not affect the importance of stylometric features.
 
 Data to reproduce the experiments in the paper is shared at:
 
-path/to/be/updated/soon
+http://www.cs.utexas.edu/~vidhoon/data-review-exp.zip
+
+Please refer to README inside for details.
+The README is also found in data/ folder in this repo to avoid
+downloading entire data. Last time I checked, size was 1GB (approx).
 
 ### Languages:
 
