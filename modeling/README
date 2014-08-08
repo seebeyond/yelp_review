@@ -1,0 +1,11 @@
+Model script
+============
+
+A single script is used for running different
+models. It is configured to tune for ROC metric
+but can be changed otherwise. It has some commented
+code to change it to tune ACC metric.
+
+It should be provided two args:
+1) input file
+2) model package name
