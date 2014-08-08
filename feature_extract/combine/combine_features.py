@@ -1,9 +1,11 @@
 import csv
 import sys
 
-
+if len(sys.argv)<9:
+	sys.exit("Usage: python combine_features.py <basic_features.csv> <pcfg_features.csv> <ngram_feature1.tsv> <ngram_feature2.tsv> <ngram_feature3.tsv> <ngram_feature4.tsv> <sentiment_feature.csv> <outfile.csv>")
+	
 BASIC_FEATURES_LIST=[1,2,5,6,7,8,9,10,11,12]
-TARGET_INDEX = 13
+TARGET_INDEX = 14
 PCFG_FEATURES_LIST=range(19,47)
 NGRAM_FEATURES_INDEX=19
 SENT_FEATURE_INDEX=1
