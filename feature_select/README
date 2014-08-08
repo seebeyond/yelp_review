@@ -1,0 +1,12 @@
+Feature selection
+=================
+
+Uses caret package built in feature selection capability to
+identify importance of different features.
+
+Like the model script, this feature selection script is also
+configurable by model type package and requires two args:
+1) input file
+2) model package name
+
+
