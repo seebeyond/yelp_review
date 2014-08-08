@@ -1,0 +1,20 @@
+Misc Tools Description
+======================
+
+1)csv2tsv.py
+convert comma seperated to tab seperated files due to some issues
+in processing CSV files in java components
+
+2)split_file.sh
+this is used to split input file into components for condorizing.
+
+3)merge_files.bash
+this is is used to combine output from different runs of condorizing
+into a single output file (see code to note how it removes header in each
+run's output file)
+
+4)submit-jobs.sh
+used to automatically submit identical condor jobs for different components
+of input file. some arguments are hard coded inside. Read code and modify 
+according to needs.
+
