@@ -1,0 +1,13 @@
+RUN DIRECTORY
+=============
+
+This location is used for running all condor jobs.
+It contains script for condorizing and wrapper scripts
+for important tasks that need to be condorized.
+
+See misc tools module for different tools that might 
+assist in aspects like spliting input and merging output
+from condor system.
+
+Other wrapper scripts can be written using the provided 
+two scripts as basis.
