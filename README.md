@@ -16,9 +16,18 @@ the same.We report improved accuracy compared to using just lexical
 or bag of words features. We also find that domain of business 
 reviews do not affect the importance of stylometric features.
 
+### Data:
 
-CITATION:
-========
+Data to reproduce the experiments in the paper is shared at:
+
+path/to/be/updated/soon
+
+### Languages:
+
+Components are coded in python, JAVA and some tools are written 
+in shell/bash scripts.
+
+### CITATION:
 
 Please cite this paper if you happen to re use code or preprocessed/
 processed Yelp review data from this project:
