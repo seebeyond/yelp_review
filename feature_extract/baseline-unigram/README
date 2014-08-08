@@ -1,0 +1,11 @@
+BASELINE UNIGRAM FEATURE EXTRACTION
+===================================
+
+Use the ngram-feature module's word ngram feature
+extraction script with NVAL=1 to do word unigram
+feature extraction. This script is located at:
+
+yelp_review / feature_extract / ngram_feature / extract_word_ngram_features.py 
+
+This is used as one of the baselines for comparing the performance of
+stylometric features.
