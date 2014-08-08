@@ -69,7 +69,9 @@ for row in reader:
 	text=text.replace('\'',' ')
 	words = nltk.word_tokenize(text)
 	words = [word.lower() for word in words]
-	if NVAL==2:
+	if NVAL==1:
+		tgrams=words
+	elif NVAL==2:
 		tgrams=nltk.bigrams(words)
 	elif NVAL ==3:
 		tgrams=nltk.trigrams(words)
