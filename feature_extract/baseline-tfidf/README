@@ -1,0 +1,11 @@
+TFIDF FEATURE EXTRACTION
+========================
+
+Uses scikit learn toolkit's count vectorizer 
+for doing TFIDF feature extraction.
+
+Need to install scikit learn using easy_install
+before running this script.
+
+Provide input file and output file names as arguments
+for this script.
